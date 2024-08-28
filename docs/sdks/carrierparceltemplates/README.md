@@ -22,18 +22,10 @@ List all carrier parcel template objects. <br> Use the following query string pa
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.Include;
+import com.shippo.sdk.models.operations.ListCarrierParcelTemplatesResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -53,7 +45,7 @@ public class Application {
             if (res.carrierParcelTemplateList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -67,21 +59,22 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `include`                                                                                          | [Optional<? extends com.shippo.sdk.models.operations.Include>](../../models/operations/Include.md) | :heavy_minus_sign:                                                                                 | filter by user or enabled                                                                          |                                                                                                    |
-| `carrier`                                                                                          | *Optional<? extends String>*                                                                       | :heavy_minus_sign:                                                                                 | filter by specific carrier                                                                         | fedex                                                                                              |
-| `shippoApiVersion`                                                                                 | *Optional<? extends String>*                                                                       | :heavy_minus_sign:                                                                                 | String used to pick a non-default API version to use                                               | 2018-02-08                                                                                         |
-
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `include`                                               | [Optional<Include>](../../models/operations/Include.md) | :heavy_minus_sign:                                      | filter by user or enabled                               |                                                         |
+| `carrier`                                               | *Optional<String>*                                      | :heavy_minus_sign:                                      | filter by specific carrier                              | fedex                                                   |
+| `shippoApiVersion`                                      | *Optional<String>*                                      | :heavy_minus_sign:                                      | String used to pick a non-default API version to use    | 2018-02-08                                              |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCarrierParcelTemplatesResponse>](../../models/operations/ListCarrierParcelTemplatesResponse.md)**
+**[ListCarrierParcelTemplatesResponse](../../models/operations/ListCarrierParcelTemplatesResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -93,18 +86,9 @@ Fetches the parcel template information for a specific carrier parcel template, 
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.GetCarrierParcelTemplateResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -123,7 +107,7 @@ public class Application {
             if (res.carrierParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -140,14 +124,14 @@ public class Application {
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `carrierParcelTemplateToken`                                    | *String*                                                        | :heavy_check_mark:                                              | The unique string representation of the carrier parcel template |                                                                 |
-| `shippoApiVersion`                                              | *Optional<? extends String>*                                    | :heavy_minus_sign:                                              | String used to pick a non-default API version to use            | 2018-02-08                                                      |
-
+| `shippoApiVersion`                                              | *Optional<String>*                                              | :heavy_minus_sign:                                              | String used to pick a non-default API version to use            | 2018-02-08                                                      |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierParcelTemplateResponse>](../../models/operations/GetCarrierParcelTemplateResponse.md)**
+**[GetCarrierParcelTemplateResponse](../../models/operations/GetCarrierParcelTemplateResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

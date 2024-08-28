@@ -1,4 +1,4 @@
-speakeasyVersion: 1.320.1
+speakeasyVersion: internal
 sources:
     my-first-source:
         sourceNamespace: my-first-source
@@ -13,7 +13,7 @@ targets:
         sourceNamespace: my-first-source
         sourceRevisionDigest: sha256:894dd8575a58f0cbcbfd3ee3c76234eaa9309e822bd81c21d06bc02d3e41d8ef
         sourceBlobDigest: sha256:d6e40e83595c0473584231286f668b6cb304ea95238286876be13ed8f13f038b
-        outLocation: /github/workspace/repo
+        outLocation: /tmp/snapshot-test/f4fa0a9d3a463a23
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -33,18 +33,25 @@ template or a fully formed user parcel template object as the parcel value.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
+import com.shippo.sdk.models.components.Cod;
+import com.shippo.sdk.models.components.DistanceUnitEnum;
+import com.shippo.sdk.models.components.LineItem;
+import com.shippo.sdk.models.components.LiveRateCreateRequest;
+import com.shippo.sdk.models.components.LiveRateCreateRequestAddressFrom;
+import com.shippo.sdk.models.components.LiveRateCreateRequestAddressTo;
+import com.shippo.sdk.models.components.LiveRateCreateRequestParcel;
+import com.shippo.sdk.models.components.ObjectState;
+import com.shippo.sdk.models.components.Parcel;
+import com.shippo.sdk.models.components.ParcelExtra;
+import com.shippo.sdk.models.components.ParcelInsurance;
+import com.shippo.sdk.models.components.ParcelInsuranceProvider;
+import com.shippo.sdk.models.components.PaymentMethod;
+import com.shippo.sdk.models.components.WeightUnitEnum;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.CreateLiveRateResponse;
+import java.lang.Exception;
 import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.util.List;
 
 public class Application {
 
@@ -59,7 +66,7 @@ public class Application {
                 .shippoApiVersion("2018-02-08")
                 .liveRateCreateRequest(LiveRateCreateRequest.builder()
                     .addressTo(LiveRateCreateRequestAddressTo.of("<value>"))
-                    .lineItems(java.util.List.of(
+                    .lineItems(List.of(
                             LineItem.builder()
                                 .currency("USD")
                                 .manufactureCountry("US")
@@ -75,14 +82,40 @@ public class Application {
                                 .objectId("abf7d5675d744b6ea9fdb6f796b28f28")
                                 .build()))
                     .addressFrom(LiveRateCreateRequestAddressFrom.of("<value>"))
-                    .parcel(LiveRateCreateRequestParcel.of("5df144dca289442cv7a06"))
+                    .parcel(LiveRateCreateRequestParcel.of(Parcel.builder()
+                                .massUnit(WeightUnitEnum.LB)
+                                .weight("1")
+                                .distanceUnit(DistanceUnitEnum.IN)
+                                .height("1")
+                                .length("1")
+                                .width("1")
+                                .extra(ParcelExtra.builder()
+                                    .cod(Cod.builder()
+                                        .amount("5.5")
+                                        .currency("USD")
+                                        .paymentMethod(PaymentMethod.CASH)
+                                        .build())
+                                    .insurance(ParcelInsurance.builder()
+                                        .amount("5.5")
+                                        .content("Laptop")
+                                        .currency("USD")
+                                        .provider(ParcelInsuranceProvider.UPS)
+                                        .build())
+                                    .build())
+                                .metadata("Customer ID 123456")
+                                .objectCreated(OffsetDateTime.parse("2014-07-09T02:19:13.174Z"))
+                                .objectId("adcfdddf8ec64b84ad22772bce3ea37a")
+                                .objectOwner("shippotle@shippo.com")
+                                .objectState(ObjectState.VALID)
+                                .objectUpdated(OffsetDateTime.parse("2014-07-09T02:19:13.174Z"))
+                                .build()))
                     .build())
                 .call();
 
             if (res.liveRatePaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -96,20 +129,21 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                         | *Optional<? extends String>*                                                                               | :heavy_minus_sign:                                                                                         | String used to pick a non-default API version to use                                                       | 2018-02-08                                                                                                 |
-| `liveRateCreateRequest`                                                                                    | [com.shippo.sdk.models.components.LiveRateCreateRequest](../../models/components/LiveRateCreateRequest.md) | :heavy_check_mark:                                                                                         | Generate rates at checkout                                                                                 |                                                                                                            |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                        | *Optional<String>*                                                        | :heavy_minus_sign:                                                        | String used to pick a non-default API version to use                      | 2018-02-08                                                                |
+| `liveRateCreateRequest`                                                   | [LiveRateCreateRequest](../../models/components/LiveRateCreateRequest.md) | :heavy_check_mark:                                                        | Generate rates at checkout                                                |                                                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateLiveRateResponse>](../../models/operations/CreateLiveRateResponse.md)**
+**[CreateLiveRateResponse](../../models/operations/CreateLiveRateResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## getDefaultParcelTemplate
 
@@ -121,18 +155,9 @@ Retrieve and display the currently configured default parcel template for live r
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.GetDefaultParcelTemplateResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -150,7 +175,7 @@ public class Application {
             if (res.defaultParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -166,17 +191,18 @@ public class Application {
 
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetDefaultParcelTemplateResponse>](../../models/operations/GetDefaultParcelTemplateResponse.md)**
+**[GetDefaultParcelTemplateResponse](../../models/operations/GetDefaultParcelTemplateResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## updateDefaultParcelTemplate
 
@@ -188,18 +214,10 @@ Update the currently configured default parcel template for live rates. The obje
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.DefaultParcelTemplateUpdateRequest;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.UpdateDefaultParcelTemplateResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -220,7 +238,7 @@ public class Application {
             if (res.defaultParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -234,20 +252,21 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                       | *Optional<? extends String>*                                                                                                                             | :heavy_minus_sign:                                                                                                                                       | String used to pick a non-default API version to use                                                                                                     | 2018-02-08                                                                                                                                               |
-| `defaultParcelTemplateUpdateRequest`                                                                                                                     | [Optional<? extends com.shippo.sdk.models.components.DefaultParcelTemplateUpdateRequest>](../../models/components/DefaultParcelTemplateUpdateRequest.md) | :heavy_minus_sign:                                                                                                                                       | N/A                                                                                                                                                      |                                                                                                                                                          |
-
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                            | *Optional<String>*                                                                                            | :heavy_minus_sign:                                                                                            | String used to pick a non-default API version to use                                                          | 2018-02-08                                                                                                    |
+| `defaultParcelTemplateUpdateRequest`                                                                          | [Optional<DefaultParcelTemplateUpdateRequest>](../../models/components/DefaultParcelTemplateUpdateRequest.md) | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |                                                                                                               |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateDefaultParcelTemplateResponse>](../../models/operations/UpdateDefaultParcelTemplateResponse.md)**
+**[UpdateDefaultParcelTemplateResponse](../../models/operations/UpdateDefaultParcelTemplateResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## deleteDefaultParcelTemplate
 
@@ -259,18 +278,9 @@ Clears the currently configured default parcel template for live rates.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.DeleteDefaultParcelTemplateResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -286,7 +296,7 @@ public class Application {
                 .call();
 
             // handle response
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -302,14 +312,14 @@ public class Application {
 
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteDefaultParcelTemplateResponse>](../../models/operations/DeleteDefaultParcelTemplateResponse.md)**
+**[DeleteDefaultParcelTemplateResponse](../../models/operations/DeleteDefaultParcelTemplateResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
