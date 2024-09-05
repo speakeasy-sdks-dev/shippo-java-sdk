@@ -16,6 +16,23 @@ Shippo sdk = Shippo.builder()
     .build();
 ```
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Shippo external API.: Use this API to integrate with the Shippo service
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Authentication](#authentication)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 

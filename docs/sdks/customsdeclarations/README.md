@@ -23,18 +23,9 @@ Returns a a list of all customs declaration objects
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.ListCustomsDeclarationsResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -54,7 +45,7 @@ public class Application {
             if (res.customsDeclarationPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -70,19 +61,20 @@ public class Application {
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `page`                                                        | *Optional<? extends Long>*                                    | :heavy_minus_sign:                                            | The page number you want to select                            |                                                               |
-| `results`                                                     | *Optional<? extends Long>*                                    | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |                                                               |
-| `shippoApiVersion`                                            | *Optional<? extends String>*                                  | :heavy_minus_sign:                                            | String used to pick a non-default API version to use          | 2018-02-08                                                    |
-
+| `page`                                                        | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The page number you want to select                            |                                                               |
+| `results`                                                     | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |                                                               |
+| `shippoApiVersion`                                            | *Optional<String>*                                            | :heavy_minus_sign:                                            | String used to pick a non-default API version to use          | 2018-02-08                                                    |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCustomsDeclarationsResponse>](../../models/operations/ListCustomsDeclarationsResponse.md)**
+**[ListCustomsDeclarationsResponse](../../models/operations/ListCustomsDeclarationsResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## create
 
@@ -94,18 +86,22 @@ Creates a new customs declaration object
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.AddressImporter;
+import com.shippo.sdk.models.components.CustomsDeclarationB13AFilingOptionEnum;
+import com.shippo.sdk.models.components.CustomsDeclarationContentsTypeEnum;
+import com.shippo.sdk.models.components.CustomsDeclarationCreateRequest;
+import com.shippo.sdk.models.components.CustomsDeclarationEelPfcEnum;
+import com.shippo.sdk.models.components.CustomsDeclarationIncotermEnum;
+import com.shippo.sdk.models.components.CustomsDeclarationNonDeliveryOptionEnum;
+import com.shippo.sdk.models.components.CustomsExporterIdentification;
+import com.shippo.sdk.models.components.CustomsItemBase;
+import com.shippo.sdk.models.components.CustomsTaxIdentification;
+import com.shippo.sdk.models.components.CustomsTaxIdentificationType;
+import com.shippo.sdk.models.components.WeightUnitEnum;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.CreateCustomsDeclarationResponse;
+import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
@@ -122,8 +118,8 @@ public class Application {
                     .certify(true)
                     .certifySigner("Shawn Ippotle")
                     .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
-                    .items(java.util.List.of(
-                            CustomsItemCreateRequest.builder()
+                    .items(List.of(
+                            CustomsItemBase.builder()
                                 .description("T-Shirt")
                                 .massUnit(WeightUnitEnum.LB)
                                 .netWeight("5")
@@ -135,7 +131,7 @@ public class Application {
                                 .skuCode("HM-123")
                                 .hsCode("0901.21")
                                 .build()))
-                    .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
+                    .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN)
                     .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
                     .contentsExplanation("T-Shirt purchase")
                     .exporterIdentification(CustomsExporterIdentification.builder()
@@ -170,7 +166,7 @@ public class Application {
             if (res.customsDeclaration().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -184,20 +180,21 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                             | *Optional<? extends String>*                                                                                                   | :heavy_minus_sign:                                                                                                             | String used to pick a non-default API version to use                                                                           | 2018-02-08                                                                                                                     |
-| `customsDeclarationCreateRequest`                                                                                              | [com.shippo.sdk.models.components.CustomsDeclarationCreateRequest](../../models/components/CustomsDeclarationCreateRequest.md) | :heavy_check_mark:                                                                                                             | CustomsDeclaration details.                                                                                                    |                                                                                                                                |
-
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                            | *Optional<String>*                                                                            | :heavy_minus_sign:                                                                            | String used to pick a non-default API version to use                                          | 2018-02-08                                                                                    |
+| `customsDeclarationCreateRequest`                                                             | [CustomsDeclarationCreateRequest](../../models/components/CustomsDeclarationCreateRequest.md) | :heavy_check_mark:                                                                            | CustomsDeclaration details.                                                                   |                                                                                               |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateCustomsDeclarationResponse>](../../models/operations/CreateCustomsDeclarationResponse.md)**
+**[CreateCustomsDeclarationResponse](../../models/operations/CreateCustomsDeclarationResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -209,18 +206,9 @@ Returns an existing customs declaration using an object ID
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.GetCustomsDeclarationResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -240,7 +228,7 @@ public class Application {
             if (res.customsDeclaration().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -257,15 +245,15 @@ public class Application {
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `customsDeclarationId`                               | *String*                                             | :heavy_check_mark:                                   | Object ID of the customs declaration                 |                                                      |
-| `page`                                               | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `page`                                               | *Optional<Long>*                                     | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCustomsDeclarationResponse>](../../models/operations/GetCustomsDeclarationResponse.md)**
+**[GetCustomsDeclarationResponse](../../models/operations/GetCustomsDeclarationResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

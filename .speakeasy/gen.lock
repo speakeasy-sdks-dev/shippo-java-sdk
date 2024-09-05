@@ -1,10 +1,10 @@
 lockVersion: 2.0.0
 id: 83c79445-e1aa-4008-8835-519234c13f68
 management:
-  docChecksum: f8a55a9af3dcccda8c950270aef6ae0b
+  docChecksum: c7e4769cf7c0215405b4e1aca75dd4d9
   docVersion: "2018-02-08"
-  speakeasyVersion: 1.320.1
-  generationVersion: 2.354.2
+  speakeasyVersion: internal
+  generationVersion: 2.409.10
   releaseVersion: 0.3.0
   configChecksum: bf4bce285d96180ce8c78c9b0656e1e5
   repoURL: https://github.com/goshippo/shippo-java-sdk.git
@@ -12,9 +12,9 @@ features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.26.0
+    core: 3.29.4
     flattening: 2.81.1
-    globalSecurity: 2.82.5
+    globalSecurity: 2.82.7
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.1
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.3
     nullables: 0.1.0
     sdkHooks: 0.1.0
-    unions: 0.0.4
+    unions: 0.0.5
 generatedFiles:
   - src/main/java/com/shippo/sdk/SecuritySource.java
   - src/main/java/com/shippo/sdk/SDKConfiguration.java
@@ -339,17 +339,17 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/PaymentMethod.java
   - src/main/java/com/shippo/sdk/models/components/Cod.java
   - src/main/java/com/shippo/sdk/models/components/ParcelCreateFromTemplateRequest.java
-  - src/main/java/com/shippo/sdk/models/components/AramexAustraliaParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/CouriersPleaseParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/DPDUKParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/DHLECommerceParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/USPSParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/UPSParcelTemplate.java
-  - src/main/java/com/shippo/sdk/models/components/FedExParcelTemplate.java
   - src/main/java/com/shippo/sdk/models/components/ParcelTemplateEnumSet.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateFedExEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateUPSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateUSPSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateDHLeCommerceEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateDPDUKEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateCouriersPleaseEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateAramexAustraliaEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationNonDeliveryOptionEnum.java
-  - src/main/java/com/shippo/sdk/models/components/CustomsItemCreateRequest.java
+  - src/main/java/com/shippo/sdk/models/components/CustomsItemBase.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationIncotermEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationEelPfcEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationContentsTypeEnum.java
@@ -470,8 +470,8 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/PickupBase.java
   - src/main/java/com/shippo/sdk/models/components/Attributes.java
   - src/main/java/com/shippo/sdk/models/components/Rate.java
-  - src/main/java/com/shippo/sdk/models/components/ParentServicelevel.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelWithParent.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevel.java
   - src/main/java/com/shippo/sdk/models/components/ResponseMessage.java
   - src/main/java/com/shippo/sdk/models/components/RatePaginatedList.java
   - src/main/java/com/shippo/sdk/models/components/RefundStatus.java
@@ -516,48 +516,47 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/Security.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageCodeEnum.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageSourceEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevel.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelSwyftEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelVehoEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUDSEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelEvriUKEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelLasershipEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelJitsuEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelOnTracEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelSendleEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelRoyalMailEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelePostGlobalEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelPostItalianeEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelParcelforceEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelMaergoEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelMondialRelayEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelLSOEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelGLSUSEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelGlobegisticsEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAramexAustraliaEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDeutschePostEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDPDUKEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDPDDEEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLGermanyEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLeCommerceEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLExpressEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelPurolatorEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelColissimoEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCorreosEspanaEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCouriersPleaseEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelChronopostEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCDLEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCanadaPostEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelBetterTrucksEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPGEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAustraliaPostEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAsendiaEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPCPostalEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAirterraEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUPSEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelFedExEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUSPSEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelEnumSet.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUSPSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelFedExEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUPSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAirterraEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPCPostalEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAsendiaEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAustraliaPostEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPGEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelBetterTrucksEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCanadaPostEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCDLEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelChronopostEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCouriersPleaseEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelCorreosEspanaEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelColissimoEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelPurolatorEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLExpressEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLeCommerceEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDHLGermanyEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDPDDEEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDPDUKEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelDeutschePostEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAramexAustraliaEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelGlobegisticsEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelGLSUSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelLSOEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelMondialRelayEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelMaergoEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelParcelforceEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelPostItalianeEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelePostGlobalEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelRoyalMailEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelSendleEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelOnTracEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelJitsuEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelLasershipEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelEvriUKEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelUDSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelVehoEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelSwyftEnum.java
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody.java
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninCarrierAccountsResponseBody.java
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninResponseBody.java
@@ -735,17 +734,17 @@ generatedFiles:
   - docs/models/components/PaymentMethod.md
   - docs/models/components/Cod.md
   - docs/models/components/ParcelCreateFromTemplateRequest.md
-  - docs/models/components/AramexAustraliaParcelTemplate.md
-  - docs/models/components/CouriersPleaseParcelTemplate.md
-  - docs/models/components/DPDUKParcelTemplate.md
-  - docs/models/components/DHLECommerceParcelTemplate.md
-  - docs/models/components/USPSParcelTemplate.md
-  - docs/models/components/UPSParcelTemplate.md
-  - docs/models/components/FedExParcelTemplate.md
   - docs/models/components/ParcelTemplateEnumSet.md
+  - docs/models/components/ParcelTemplateFedExEnum.md
+  - docs/models/components/ParcelTemplateUPSEnum.md
+  - docs/models/components/ParcelTemplateUSPSEnum.md
+  - docs/models/components/ParcelTemplateDHLeCommerceEnum.md
+  - docs/models/components/ParcelTemplateDPDUKEnum.md
+  - docs/models/components/ParcelTemplateCouriersPleaseEnum.md
+  - docs/models/components/ParcelTemplateAramexAustraliaEnum.md
   - docs/models/components/CustomsDeclarationCreateRequest.md
   - docs/models/components/CustomsDeclarationNonDeliveryOptionEnum.md
-  - docs/models/components/CustomsItemCreateRequest.md
+  - docs/models/components/CustomsItemBase.md
   - docs/models/components/CustomsDeclarationIncotermEnum.md
   - docs/models/components/CustomsDeclarationEelPfcEnum.md
   - docs/models/components/CustomsDeclarationContentsTypeEnum.md
@@ -866,8 +865,8 @@ generatedFiles:
   - docs/models/components/PickupBase.md
   - docs/models/components/Attributes.md
   - docs/models/components/Rate.md
-  - docs/models/components/ParentServicelevel.md
   - docs/models/components/ServiceLevelWithParent.md
+  - docs/models/components/ServiceLevel.md
   - docs/models/components/ResponseMessage.md
   - docs/models/components/RatePaginatedList.md
   - docs/models/components/RefundStatus.md
@@ -912,48 +911,47 @@ generatedFiles:
   - docs/models/components/Security.md
   - docs/models/components/AddressValidationResultsMessageCodeEnum.md
   - docs/models/components/AddressValidationResultsMessageSourceEnum.md
-  - docs/models/components/ServiceLevel.md
-  - docs/models/components/ServiceLevelSwyftEnum.md
-  - docs/models/components/ServiceLevelVehoEnum.md
-  - docs/models/components/ServiceLevelUDSEnum.md
-  - docs/models/components/ServiceLevelEvriUKEnum.md
-  - docs/models/components/ServiceLevelLasershipEnum.md
-  - docs/models/components/ServiceLevelJitsuEnum.md
-  - docs/models/components/ServiceLevelOnTracEnum.md
-  - docs/models/components/ServiceLevelSendleEnum.md
-  - docs/models/components/ServiceLevelRoyalMailEnum.md
-  - docs/models/components/ServiceLevelePostGlobalEnum.md
-  - docs/models/components/ServiceLevelPostItalianeEnum.md
-  - docs/models/components/ServiceLevelParcelforceEnum.md
-  - docs/models/components/ServiceLevelMaergoEnum.md
-  - docs/models/components/ServiceLevelMondialRelayEnum.md
-  - docs/models/components/ServiceLevelLSOEnum.md
-  - docs/models/components/ServiceLevelGLSUSEnum.md
-  - docs/models/components/ServiceLevelGlobegisticsEnum.md
-  - docs/models/components/ServiceLevelAramexAustraliaEnum.md
-  - docs/models/components/ServiceLevelDeutschePostEnum.md
-  - docs/models/components/ServiceLevelDPDUKEnum.md
-  - docs/models/components/ServiceLevelDPDDEEnum.md
-  - docs/models/components/ServiceLevelDHLGermanyEnum.md
-  - docs/models/components/ServiceLevelDHLeCommerceEnum.md
-  - docs/models/components/ServiceLevelDHLExpressEnum.md
-  - docs/models/components/ServiceLevelPurolatorEnum.md
-  - docs/models/components/ServiceLevelColissimoEnum.md
-  - docs/models/components/ServiceLevelCorreosEspanaEnum.md
-  - docs/models/components/ServiceLevelCouriersPleaseEnum.md
-  - docs/models/components/ServiceLevelChronopostEnum.md
-  - docs/models/components/ServiceLevelCDLEnum.md
-  - docs/models/components/ServiceLevelCanadaPostEnum.md
-  - docs/models/components/ServiceLevelBetterTrucksEnum.md
-  - docs/models/components/ServiceLevelAPGEnum.md
-  - docs/models/components/ServiceLevelAustraliaPostEnum.md
-  - docs/models/components/ServiceLevelAsendiaEnum.md
-  - docs/models/components/ServiceLevelAPCPostalEnum.md
-  - docs/models/components/ServiceLevelAirterraEnum.md
-  - docs/models/components/ServiceLevelUPSEnum.md
-  - docs/models/components/ServiceLevelFedExEnum.md
-  - docs/models/components/ServiceLevelUSPSEnum.md
   - docs/models/components/ServiceLevelEnumSet.md
+  - docs/models/components/ServiceLevelUSPSEnum.md
+  - docs/models/components/ServiceLevelFedExEnum.md
+  - docs/models/components/ServiceLevelUPSEnum.md
+  - docs/models/components/ServiceLevelAirterraEnum.md
+  - docs/models/components/ServiceLevelAPCPostalEnum.md
+  - docs/models/components/ServiceLevelAsendiaEnum.md
+  - docs/models/components/ServiceLevelAustraliaPostEnum.md
+  - docs/models/components/ServiceLevelAPGEnum.md
+  - docs/models/components/ServiceLevelBetterTrucksEnum.md
+  - docs/models/components/ServiceLevelCanadaPostEnum.md
+  - docs/models/components/ServiceLevelCDLEnum.md
+  - docs/models/components/ServiceLevelChronopostEnum.md
+  - docs/models/components/ServiceLevelCouriersPleaseEnum.md
+  - docs/models/components/ServiceLevelCorreosEspanaEnum.md
+  - docs/models/components/ServiceLevelColissimoEnum.md
+  - docs/models/components/ServiceLevelPurolatorEnum.md
+  - docs/models/components/ServiceLevelDHLExpressEnum.md
+  - docs/models/components/ServiceLevelDHLeCommerceEnum.md
+  - docs/models/components/ServiceLevelDHLGermanyEnum.md
+  - docs/models/components/ServiceLevelDPDDEEnum.md
+  - docs/models/components/ServiceLevelDPDUKEnum.md
+  - docs/models/components/ServiceLevelDeutschePostEnum.md
+  - docs/models/components/ServiceLevelAramexAustraliaEnum.md
+  - docs/models/components/ServiceLevelGlobegisticsEnum.md
+  - docs/models/components/ServiceLevelGLSUSEnum.md
+  - docs/models/components/ServiceLevelLSOEnum.md
+  - docs/models/components/ServiceLevelMondialRelayEnum.md
+  - docs/models/components/ServiceLevelMaergoEnum.md
+  - docs/models/components/ServiceLevelParcelforceEnum.md
+  - docs/models/components/ServiceLevelPostItalianeEnum.md
+  - docs/models/components/ServiceLevelePostGlobalEnum.md
+  - docs/models/components/ServiceLevelRoyalMailEnum.md
+  - docs/models/components/ServiceLevelSendleEnum.md
+  - docs/models/components/ServiceLevelOnTracEnum.md
+  - docs/models/components/ServiceLevelJitsuEnum.md
+  - docs/models/components/ServiceLevelLasershipEnum.md
+  - docs/models/components/ServiceLevelEvriUKEnum.md
+  - docs/models/components/ServiceLevelUDSEnum.md
+  - docs/models/components/ServiceLevelVehoEnum.md
+  - docs/models/components/ServiceLevelSwyftEnum.md
   - docs/models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody.md
   - docs/models/errors/InitiateOauth2SigninCarrierAccountsResponseBody.md
   - docs/models/errors/InitiateOauth2SigninResponseBody.md
@@ -979,3 +977,4 @@ generatedFiles:
   - docs/sdks/shippoaccounts/README.md
   - docs/sdks/webhooks/README.md
   - USAGE.md
+  - CONTRIBUTING.md
