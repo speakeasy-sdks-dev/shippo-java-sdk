@@ -22,18 +22,12 @@ Returns a list of all transaction objects.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.TrackingStatusEnum;
+import com.shippo.sdk.models.components.TransactionStatusEnum;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.ListTransactionsRequest;
+import com.shippo.sdk.models.operations.ListTransactionsResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -56,7 +50,7 @@ public class Application {
             if (res.transactionPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -70,19 +64,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [com.shippo.sdk.models.operations.ListTransactionsRequest](../../models/operations/ListTransactionsRequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ListTransactionsRequest](../../models/operations/ListTransactionsRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListTransactionsResponse>](../../models/operations/ListTransactionsResponse.md)**
+**[ListTransactionsResponse](../../models/operations/ListTransactionsResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## create
 
@@ -94,18 +89,12 @@ Creates a new transaction object and purchases the shipping label using a rate o
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.LabelFileTypeEnum;
+import com.shippo.sdk.models.components.TransactionCreateRequest;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.CreateTransactionRequestBody;
+import com.shippo.sdk.models.operations.CreateTransactionResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -118,7 +107,7 @@ public class Application {
 
             CreateTransactionResponse res = sdk.transactions().create()
                 .shippoApiVersion("2018-02-08")
-                .requestBody(com.shippo.sdk.models.operations.CreateTransactionRequestBody.of(TransactionCreateRequest.builder()
+                .requestBody(CreateTransactionRequestBody.of(TransactionCreateRequest.builder()
                         .rate("ec9f0d3adc9441449c85d315f0997fd5")
                         .async(false)
                         .labelFileType(LabelFileTypeEnum.PDF4X6)
@@ -129,7 +118,7 @@ public class Application {
             if (res.transaction().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -143,20 +132,21 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                       | *Optional<? extends String>*                                                                                             | :heavy_minus_sign:                                                                                                       | String used to pick a non-default API version to use                                                                     | 2018-02-08                                                                                                               |
-| `requestBody`                                                                                                            | [com.shippo.sdk.models.operations.CreateTransactionRequestBody](../../models/operations/CreateTransactionRequestBody.md) | :heavy_check_mark:                                                                                                       | Examples.                                                                                                                |                                                                                                                          |
-
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                      | *Optional<String>*                                                                      | :heavy_minus_sign:                                                                      | String used to pick a non-default API version to use                                    | 2018-02-08                                                                              |
+| `requestBody`                                                                           | [CreateTransactionRequestBody](../../models/operations/CreateTransactionRequestBody.md) | :heavy_check_mark:                                                                      | Examples.                                                                               |                                                                                         |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateTransactionResponse>](../../models/operations/CreateTransactionResponse.md)**
+**[CreateTransactionResponse](../../models/operations/CreateTransactionResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -168,18 +158,9 @@ Returns an existing transaction using an object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.GetTransactionResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -198,7 +179,7 @@ public class Application {
             if (res.transaction().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -215,14 +196,14 @@ public class Application {
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `transactionId`                                      | *String*                                             | :heavy_check_mark:                                   | Object ID of the transaction to update               |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetTransactionResponse>](../../models/operations/GetTransactionResponse.md)**
+**[GetTransactionResponse](../../models/operations/GetTransactionResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
