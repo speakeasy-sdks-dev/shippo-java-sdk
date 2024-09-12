@@ -25,18 +25,9 @@ Returns a list of Shippo Accounts objects
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.ListShippoAccountsResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -56,7 +47,7 @@ public class Application {
             if (res.shippoAccountPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -72,19 +63,20 @@ public class Application {
 
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `page`                                               | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
-| `results`                                            | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The number of results to return per page (max 100)   |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `page`                                               | *Optional<Long>*                                     | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
+| `results`                                            | *Optional<Long>*                                     | :heavy_minus_sign:                                   | The number of results to return per page (max 100)   |                                                      |
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListShippoAccountsResponse>](../../models/operations/ListShippoAccountsResponse.md)**
+**[ListShippoAccountsResponse](../../models/operations/ListShippoAccountsResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## create
 
@@ -96,18 +88,10 @@ Creates a Shippo Account object
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.ShippoAccountUpdateRequest;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.CreateShippoAccountResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -131,7 +115,7 @@ public class Application {
             if (res.shippoAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -145,20 +129,21 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          | Example                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                   | *Optional<? extends String>*                                                                                         | :heavy_minus_sign:                                                                                                   | String used to pick a non-default API version to use                                                                 | 2018-02-08                                                                                                           |
-| `shippoAccountUpdateRequest`                                                                                         | [com.shippo.sdk.models.components.ShippoAccountUpdateRequest](../../models/components/ShippoAccountUpdateRequest.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
-
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                  | *Optional<String>*                                                                  | :heavy_minus_sign:                                                                  | String used to pick a non-default API version to use                                | 2018-02-08                                                                          |
+| `shippoAccountUpdateRequest`                                                        | [ShippoAccountUpdateRequest](../../models/components/ShippoAccountUpdateRequest.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |                                                                                     |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateShippoAccountResponse>](../../models/operations/CreateShippoAccountResponse.md)**
+**[CreateShippoAccountResponse](../../models/operations/CreateShippoAccountResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -170,18 +155,9 @@ Returns a Shippo Account using an object ID
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.GetShippoAccountResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -200,7 +176,7 @@ public class Application {
             if (res.shippoAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -217,17 +193,18 @@ public class Application {
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `shippoAccountId`                                    | *String*                                             | :heavy_check_mark:                                   | Object ID of the ShippoAccount                       |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetShippoAccountResponse>](../../models/operations/GetShippoAccountResponse.md)**
+**[GetShippoAccountResponse](../../models/operations/GetShippoAccountResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## update
 
@@ -239,18 +216,10 @@ Updates a Shippo Account object
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.ShippoAccountUpdateRequest;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.UpdateShippoAccountResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -275,7 +244,7 @@ public class Application {
             if (res.shippoAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
@@ -289,18 +258,18 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              | Example                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoAccountId`                                                                                                                        | *String*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | Object ID of the ShippoAccount                                                                                                           |                                                                                                                                          |
-| `shippoApiVersion`                                                                                                                       | *Optional<? extends String>*                                                                                                             | :heavy_minus_sign:                                                                                                                       | String used to pick a non-default API version to use                                                                                     | 2018-02-08                                                                                                                               |
-| `shippoAccountUpdateRequest`                                                                                                             | [Optional<? extends com.shippo.sdk.models.components.ShippoAccountUpdateRequest>](../../models/components/ShippoAccountUpdateRequest.md) | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |                                                                                                                                          |
-
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `shippoAccountId`                                                                             | *String*                                                                                      | :heavy_check_mark:                                                                            | Object ID of the ShippoAccount                                                                |                                                                                               |
+| `shippoApiVersion`                                                                            | *Optional<String>*                                                                            | :heavy_minus_sign:                                                                            | String used to pick a non-default API version to use                                          | 2018-02-08                                                                                    |
+| `shippoAccountUpdateRequest`                                                                  | [Optional<ShippoAccountUpdateRequest>](../../models/components/ShippoAccountUpdateRequest.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateShippoAccountResponse>](../../models/operations/UpdateShippoAccountResponse.md)**
+**[UpdateShippoAccountResponse](../../models/operations/UpdateShippoAccountResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

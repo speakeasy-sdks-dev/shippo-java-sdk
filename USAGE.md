@@ -3,18 +3,9 @@
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.errors.SDKError;
+import com.shippo.sdk.models.operations.ListAddressesResponse;
+import java.lang.Exception;
 
 public class Application {
 
@@ -34,7 +25,7 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
+        } catch (SDKError e) {
             // handle exception
             throw e;
         } catch (Exception e) {
