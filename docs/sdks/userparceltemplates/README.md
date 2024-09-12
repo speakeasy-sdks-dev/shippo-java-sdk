@@ -113,9 +113,9 @@ public class Application {
             CreateUserParcelTemplateResponse res = sdk.userParcelTemplates().create()
                 .shippoApiVersion("2018-02-08")
                 .userParcelTemplateCreateRequest(UserParcelTemplateCreateRequest.of(UserParcelTemplateWithCarrierTemplateCreateRequest.builder()
-                        .weight("12")
-                        .weightUnit(WeightUnitEnum.LB)
-                        .build()))
+                    .weight("12")
+                    .weightUnit(WeightUnitEnum.LB)
+                    .build()))
                 .call();
 
             if (res.userParcelTemplate().isPresent()) {

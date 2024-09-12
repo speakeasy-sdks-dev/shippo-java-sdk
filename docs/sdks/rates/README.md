@@ -170,7 +170,7 @@ public class Application {
 
             ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
                 .shipmentId("<value>")
-                .currencyCode("<value>")
+                .currencyCode("USD")
                 .build();
 
             ListShipmentRatesByCurrencyCodeResponse res = sdk.rates().listShipmentRatesByCurrencyCode()

@@ -41,7 +41,7 @@ public class Application {
 
             WebhookUpdateRequest req = WebhookUpdateRequest.builder()
                 .event(WebhookEventTypeEnum.BATCH_CREATED)
-                .url("<value>")
+                .url("https://wobbly-marmalade.org")
                 .build();
 
             CreateWebhookResponse res = sdk.webhooks().createWebhook()
@@ -220,7 +220,7 @@ public class Application {
                 .webhookId("<value>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
                     .event(WebhookEventTypeEnum.BATCH_CREATED)
-                    .url("<value>")
+                    .url("http://crooked-acknowledgment.biz")
                     .build())
                 .call();
 

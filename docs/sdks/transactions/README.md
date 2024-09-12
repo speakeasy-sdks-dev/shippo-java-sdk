@@ -108,11 +108,11 @@ public class Application {
             CreateTransactionResponse res = sdk.transactions().create()
                 .shippoApiVersion("2018-02-08")
                 .requestBody(CreateTransactionRequestBody.of(TransactionCreateRequest.builder()
-                        .rate("ec9f0d3adc9441449c85d315f0997fd5")
-                        .async(false)
-                        .labelFileType(LabelFileTypeEnum.PDF4X6)
-                        .metadata("Order ID #12345")
-                        .build()))
+                    .rate("ec9f0d3adc9441449c85d315f0997fd5")
+                    .async(false)
+                    .labelFileType(LabelFileTypeEnum.PDF4X6)
+                    .metadata("Order ID #12345")
+                    .build()))
                 .call();
 
             if (res.transaction().isPresent()) {

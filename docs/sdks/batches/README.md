@@ -54,7 +54,7 @@ public class Application {
                     .defaultCarrierAccount("078870331023437cb917f5187429b093")
                     .defaultServicelevelToken("usps_priority")
                     .batchShipments(List.of(
-                        ))
+                    ))
                     .labelFiletype(LabelFileTypeEnum.PDF4X6)
                     .metadata("BATCH #1")
                     .build())
