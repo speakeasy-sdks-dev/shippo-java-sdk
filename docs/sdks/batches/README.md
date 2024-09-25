@@ -286,7 +286,7 @@ public class Application {
             .build();
 
         GetBatchResponse res = sdk.batches().get()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -363,7 +363,7 @@ public class Application {
             .build();
 
         AddShipmentsToBatchResponse res = sdk.batches().addShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     BatchShipmentCreateRequest.builder()
@@ -575,7 +575,7 @@ public class Application {
             .build();
 
         PurchaseBatchResponse res = sdk.batches().purchase()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -628,7 +628,7 @@ public class Application {
             .build();
 
         RemoveShipmentsFromBatchResponse res = sdk.batches().removeShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     "<value>"))

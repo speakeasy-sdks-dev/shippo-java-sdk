@@ -229,7 +229,7 @@ public class Application {
             .build();
 
         DeleteServiceGroupResponse res = sdk.serviceGroups().delete()
-                .serviceGroupId("<value>")
+                .serviceGroupId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

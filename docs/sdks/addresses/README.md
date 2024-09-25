@@ -158,7 +158,7 @@ public class Application {
             .build();
 
         GetAddressResponse res = sdk.addresses().get()
-                .addressId("<value>")
+                .addressId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -210,7 +210,7 @@ public class Application {
             .build();
 
         ValidateAddressResponse res = sdk.addresses().validate()
-                .addressId("<value>")
+                .addressId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

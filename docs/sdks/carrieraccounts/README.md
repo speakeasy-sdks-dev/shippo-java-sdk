@@ -168,7 +168,7 @@ public class Application {
             .build();
 
         GetCarrierAccountResponse res = sdk.carrierAccounts().get()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -223,7 +223,7 @@ public class Application {
             .build();
 
         UpdateCarrierAccountResponse res = sdk.carrierAccounts().update()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
@@ -307,7 +307,7 @@ public class Application {
             .build();
 
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
-                .carrierAccountObjectId("<value>")
+                .carrierAccountObjectId("<id>")
                 .redirectUri("https://enlightened-mortise.com/")
                 .state("Louisiana")
                 .shippoApiVersion("2018-02-08")

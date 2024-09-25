@@ -333,7 +333,7 @@ public class Application {
             .build();
 
         GetShipmentResponse res = sdk.shipments().get()
-                .shipmentId("<value>")
+                .shipmentId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

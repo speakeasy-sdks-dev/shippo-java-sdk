@@ -175,7 +175,7 @@ public class Application {
             .build();
 
         GetParcelResponse res = sdk.parcels().get()
-                .parcelId("<value>")
+                .parcelId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

@@ -213,7 +213,7 @@ public class Application {
             .build();
 
         GetCustomsDeclarationResponse res = sdk.customsDeclarations().get()
-                .customsDeclarationId("<value>")
+                .customsDeclarationId("<id>")
                 .page(1L)
                 .shippoApiVersion("2018-02-08")
                 .call();

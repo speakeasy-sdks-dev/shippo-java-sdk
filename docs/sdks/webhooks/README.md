@@ -143,7 +143,7 @@ public class Application {
             .build();
 
         GetWebhookResponse res = sdk.webhooks().getWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         if (res.webhook().isPresent()) {
@@ -195,7 +195,7 @@ public class Application {
             .build();
 
         UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
                     .event(WebhookEventTypeEnum.BATCH_CREATED)
                     .url("https://example.com/shippo-webhook")
@@ -252,7 +252,7 @@ public class Application {
             .build();
 
         DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         // handle response
