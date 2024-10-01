@@ -70,10 +70,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -140,10 +139,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -168,7 +166,7 @@ public class Application {
             .build();
 
         GetCarrierAccountResponse res = sdk.carrierAccounts().get()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -192,10 +190,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## update
 
@@ -223,7 +220,7 @@ public class Application {
             .build();
 
         UpdateCarrierAccountResponse res = sdk.carrierAccounts().update()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
@@ -276,10 +273,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## initiateOauth2Signin
 
@@ -307,7 +303,7 @@ public class Application {
             .build();
 
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
-                .carrierAccountObjectId("<value>")
+                .carrierAccountObjectId("<id>")
                 .redirectUri("https://enlightened-mortise.com/")
                 .state("Louisiana")
                 .shippoApiVersion("2018-02-08")
@@ -333,13 +329,12 @@ public class Application {
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | models/errors/InitiateOauth2SigninResponseBody                        | 400                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                   | application/json                                                      |
-| models/errors/SDKError                                                | 4xx-5xx                                                               | \*\/*                                                                 |
-
+| models/errors/SDKError                                                | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## register
 
@@ -395,10 +390,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getRegistrationStatus
 
@@ -448,6 +442,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

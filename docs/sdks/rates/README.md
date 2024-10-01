@@ -35,7 +35,7 @@ public class Application {
             .build();
 
         GetRateResponse res = sdk.rates().get()
-                .rateId("<value>")
+                .rateId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -59,10 +59,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listShipmentRates
 
@@ -87,7 +86,7 @@ public class Application {
             .build();
 
         ListShipmentRatesResponse res = sdk.rates().listShipmentRates()
-                .shipmentId("<value>")
+                .shipmentId("<id>")
                 .page(1L)
                 .results(25L)
                 .shippoApiVersion("2018-02-08")
@@ -115,10 +114,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listShipmentRatesByCurrencyCode
 
@@ -150,7 +148,7 @@ public class Application {
             .build();
 
         ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
-                .shipmentId("<value>")
+                .shipmentId("<id>")
                 .currencyCode("USD")
                 .build();
 
@@ -177,6 +175,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

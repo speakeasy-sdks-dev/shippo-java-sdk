@@ -255,10 +255,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -286,7 +285,7 @@ public class Application {
             .build();
 
         GetBatchResponse res = sdk.batches().get()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -310,10 +309,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## addShipments
 
@@ -363,7 +361,7 @@ public class Application {
             .build();
 
         AddShipmentsToBatchResponse res = sdk.batches().addShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     BatchShipmentCreateRequest.builder()
@@ -544,10 +542,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## purchase
 
@@ -575,7 +572,7 @@ public class Application {
             .build();
 
         PurchaseBatchResponse res = sdk.batches().purchase()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -599,10 +596,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## removeShipments
 
@@ -628,7 +624,7 @@ public class Application {
             .build();
 
         RemoveShipmentsFromBatchResponse res = sdk.batches().removeShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     "<value>"))
@@ -655,6 +651,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

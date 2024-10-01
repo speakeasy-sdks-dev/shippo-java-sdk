@@ -64,10 +64,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -122,10 +121,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -150,7 +148,7 @@ public class Application {
             .build();
 
         GetShippoAccountResponse res = sdk.shippoAccounts().get()
-                .shippoAccountId("<value>")
+                .shippoAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -174,10 +172,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## update
 
@@ -203,7 +200,7 @@ public class Application {
             .build();
 
         UpdateShippoAccountResponse res = sdk.shippoAccounts().update()
-                .shippoAccountId("<value>")
+                .shippoAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .shippoAccountUpdateRequest(ShippoAccountUpdateRequest.builder()
                     .email("hippo@shippo.com")
@@ -234,6 +231,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
